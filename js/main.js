@@ -12,7 +12,6 @@ function getList() {
         $.each(data, function (key, val) {
             var del_link = $("<a/>", {
                 class: 'del_link',
-                //href: 'api.php?action=delete&name=' + val.substr(0, val.lastIndexOf('.')),
                 onClick: 'deleteAlias("' + val.substr(0, val.lastIndexOf('.')) + '");',
                 href: '#',
                 text: 'del'
