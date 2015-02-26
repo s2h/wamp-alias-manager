@@ -11,7 +11,7 @@ function getList() {
             var del_link = $("<a/>", {
                 class: 'del_link',
                 //href: 'api.php?action=delete&name=' + val.substr(0, val.lastIndexOf('.')),
-                onClick: 'deleteAlias("'+val.substr(0, val.lastIndexOf('.'))+'");',
+                onClick: 'deleteAlias("' + val.substr(0, val.lastIndexOf('.')) + '");',
                 href: '#',
                 text: 'del'
             });
@@ -28,15 +28,15 @@ function getList() {
     });
 }
 
-$(document).on('submit', 'form#create_form', function(event){
+$(document).on('submit', 'form#create_form', function (event) {
     event.preventDefault();
-    $.getJSON('api.php?action=create&name='+$('#name').val()+'&path='+$('#path').val(), function(data){
+    $.getJSON('api.php?action=create&name=' + $('#name').val() + '&path=' + $('#path').val(), function (data) {
         getList();
     });
 });
 function deleteAlias(alias) {
     event.preventDefault();
-    $.getJSON('api.php?action=delete&name='+alias, function(data) {
+    $.getJSON('api.php?action=delete&name=' + alias, function (data) {
         getList();
     });
 }

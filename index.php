@@ -9,12 +9,11 @@
 </head>
 <body>
 <form action="" method="get" id="create_form">
-<label for="name">Name</label>
-<input type="text" name="name" id="name" value=""/>
-<label for="path">Path</label>
-<input type="text" name="path" id="path" value=""/>
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" value=""/>
+    <label for="path">Path</label>
+    <input type="text" name="path" id="path" value=""/>
     <input type="submit" value="Create new"/>
 </form>
-<div class="result"></div>
 </body>
 </html>

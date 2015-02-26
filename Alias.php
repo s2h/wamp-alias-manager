@@ -41,7 +41,10 @@ class Alias
     {
         $fileNamePath = $this->path . $name . '.conf';
         if (file_exists($fileNamePath)) {
-            unlink($fileNamePath);
+            if ( ! file_exists($this->path . 'backup')) {
+                mkdir($this->path . 'backup');
+            }
+            rename($fileNamePath, $this->path . 'backup/' . $name . '.conf.' . date('YmdHis'));
         }
 
         return true;
@@ -52,7 +55,7 @@ class Alias
         $files = scandir($this->path);
         $aliases = array();
         foreach ($files as $file) {
-            if ($file != '.' && $file != '..') $aliases[] = $file;
+            if ( ! is_dir($this->path . $file)) $aliases[] = $file;
         }
 
         return $aliases;
