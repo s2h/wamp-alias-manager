@@ -4,8 +4,9 @@ ul {
 
 .hide_me {
     display: none;
+    margin-left: 1em;
 }
 
-li:hover .hide_me{
+li:hover .hide_me {
     display: inline-block;
 }

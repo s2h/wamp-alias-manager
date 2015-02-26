@@ -1,11 +1,13 @@
 <?php
 spl_autoload_register(function ($class) {
-    include $class . '.php';
+    if ( ! empty($class)) {
+        include $class . '.php';
+    }
 });
 header("Content-type: text/json");
 
 if ($_SERVER['HTTP_HOST'] != 'localhost') {
-    echo json_encode(array('error'=> 'only for local users'));
+    echo json_encode(array('error' => 'only for local users'));
     die();
 }
 
@@ -17,12 +19,13 @@ $path = htmlspecialchars(empty($_REQUEST['path']) ? '' : $_REQUEST['path']);
 if ( ! empty($action) && ! empty($name)) {
     switch ($action) {
         case 'view':
+            header("Content-type: text/html");
             Debug::trace($alias->viewAlias($name));
             break;
         case 'create':
             if ( ! empty($path)) {
                 $alias->createNewAlias($name, $path);
-                echo json_encode(array('Success'=> true));
+                echo json_encode(array('Success' => true));
                 /*Debug::trace('Alias "' .
                     $name .
                     '" with path ' .
@@ -34,7 +37,7 @@ if ( ! empty($action) && ! empty($name)) {
             break;
         case 'delete':
             $alias->deleteAlias($name);
-            echo json_encode(array('Success'=> true));
+            echo json_encode(array('Success' => true));
             break;
     }
 }
