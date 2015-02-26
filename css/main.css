@@ -1,0 +1,11 @@
+ul {
+    color: cornflowerblue;
+}
+
+.hide_me {
+    display: none;
+}
+
+li:hover .hide_me{
+    display: inline-block;
+}
